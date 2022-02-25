@@ -9,7 +9,7 @@ TODO: parse userAgents.
 ## Getting started
 
 ```
-flutter pub add auto_size_text
+flutter pub add user_agent_mock
 ```
 
 ## Usage
