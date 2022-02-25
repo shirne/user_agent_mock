@@ -162,10 +162,11 @@ class UserAgent {
         switch (_device) {
           case UADevice.mobile:
             _build.write(
-                '(iPhone; CPU iPhone OS $_systemVersion like Mac OS X) ');
+                '(iPhone; CPU iPhone OS ${_systemVersion ?? '13_2_3'} like Mac OS X) ');
             break;
           case UADevice.pad:
-            _build.write('(iPad; CPU OS $_systemVersion like Mac OS X) ');
+            _build.write(
+                '(iPad; CPU OS ${_systemVersion ?? '13_2_3'} like Mac OS X) ');
             break;
           case UADevice.pc:
           default:
@@ -221,11 +222,13 @@ class UserAgent {
     switch (_browser) {
       case UABrowser.chrome:
         _build.write(
-            'Chrome/${_browserVersion ?? _chromeVersion} Safari/$_engineVersion');
+            'Chrome/${_browserVersion ?? _chromeVersion ?? '98.0.4758.102'}${_device != UADevice.pc ? ' Mobile' : ''} Safari/$_engineVersion');
         break;
       case UABrowser.edge:
-        _build.write('Chrome/${_chromeVersion ?? _browserVersion} '
+        _build.write(
+            'Chrome/${_chromeVersion ?? _browserVersion ?? '98.0.4758.102'} '
             'Safari/$_engineVersion '
+            '${_device != UADevice.pc ? ' Mobile' : ''} '
             'Edg/$_browserVersion');
         break;
       case UABrowser.firefox:
